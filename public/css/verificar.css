@@ -1,0 +1,72 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  body {
+    overflow: hidden;
+    background-color: #E4E9F7;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  #formVerify {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px; /* Aumente a largura aqui conforme necessário */
+    width: 100%; /* Define a largura para ocupar todo o espaço disponível */
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    margin-top: 12%;
+  }
+  
+  #formVerify label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+  }
+  
+  #formVerify input[type="text"] {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    transition: border-color 0.3s;
+  }
+  
+  #formVerify input[type="text"]:focus {
+    border-color: #00619c;
+    outline: none;
+  }
+  
+  #formVerify button {
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #00619c;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+  }
+  
+  #formVerify button:hover {
+    background-color: #00619c;
+  }
+  
