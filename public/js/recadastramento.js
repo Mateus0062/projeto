@@ -1,7 +1,7 @@
 let arrow = document.querySelectorAll(".arrow");
 for (var i = 0; i < arrow.length; i++) {
   arrow[i].addEventListener("click", (e)=>{
- let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+ let arrowParent = e.target.parentElement.parentElement;
  arrowParent.classList.toggle("showMenu");
   });
 }
@@ -19,13 +19,13 @@ formAPI.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const codigoInscricao = document.querySelector("#codigoInscricao").value;
-  const idCategoriaInscricao = document.querySelector("#idCategoriaInscricao").value;
+  const token = document.querySelector("#Token").value;
 
   const url = 'http://localhost:3000/proxy/Recadastramento';
   const data = {
-    Token: "39265653db698e339e83d8f695d0a38161f03a2b",
+    Token: token,
     CodigoInscricao: codigoInscricao,
-    IdCategoriaInscricao: idCategoriaInscricao,
+    IdCategoriaInscricao: 1,
     Pessoa: "F"
   };
 

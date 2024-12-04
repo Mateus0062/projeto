@@ -18,8 +18,8 @@
   #formVerify {
     display: flex;
     flex-direction: column;
-    max-width: 600px; /* Aumente a largura aqui conforme necessário */
-    width: 100%; /* Define a largura para ocupar todo o espaço disponível */
+    max-width: 600px; 
+    width: 100%; 
     margin: 20px auto;
     padding: 20px;
     border: 1px solid #ccc;

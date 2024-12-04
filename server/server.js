@@ -4,11 +4,9 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
-// Configuração para servir arquivos estáticos
 app.use(express.static(path.join(__dirname, '../public')));
-app.use(express.json()); // Para processar o corpo das requisições JSON
+app.use(express.json()); 
 
-// Rota principal
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../html/login.html'));
 });
@@ -21,7 +19,6 @@ app.get('/verificar', (req, res) => {
     res.sendFile(path.join(__dirname, '../html/verificar.html'));
 })
 
-// Exemplo de rota que pode ser usada para proxy (substitua com a sua lógica)
 app.post('/proxy/Recadastramento', async (req, res) => {
   const fetch = (await import('node-fetch')).default;
 
