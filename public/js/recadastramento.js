@@ -37,10 +37,29 @@ formAPI.addEventListener("submit", async (event) => {
       },
       body: JSON.stringify(data)
     });
-
+  
     const result = await response.json();
-    document.getElementById("resultado").innerHTML = `<pre>${JSON.stringify(result, null, 2)}</pre>`;
+  
+    // Filtrar os campos desejados
+    const atributosDesejados = ["Nome", "CPFCNPJ", "Pessoa", "CodigoInscricao", "Mensagem"];
+    const resultadoFiltrado = Object.fromEntries(
+      Object.entries(result).filter(([key]) => atributosDesejados.includes(key))
+    );
+  
+    // Exibir os dados estilizados
+    const resultadoContainer = document.getElementById("resultado");
+    resultadoContainer.innerHTML = `
+      <div class="resultado-estilizado">
+        ${Object.entries(resultadoFiltrado).map(([key, value]) => `
+          <div class="resultado-item">
+            <span class="resultado-label">${key}:</span> 
+            <span class="resultado-valor">${value || "N/A"}</span>
+          </div>
+        `).join('')}
+      </div>
+    `;
   } catch (error) {
     document.getElementById("resultado").innerText = "Ocorreu um erro: " + error.message;
   }
+  
 });

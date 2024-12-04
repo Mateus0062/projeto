@@ -6,9 +6,6 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
-body {
-  /*overflow: auto;*/
-}
 
 .sidebar{
   position: fixed;
@@ -272,36 +269,36 @@ body {
 }
 
 .sidebar .profile-details {
-    position: relative;
-    top: 0;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: white;
-    padding: 12px 0;
-    transition: all 0.5s ease;
-    z-index: 1;
-  }
+  position: relative;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  padding: 12px 0;
+  transition: all 0.5s ease;
+  z-index: 1;
+}
   
-  .sidebar .logo-details {
-    margin-top: 20px; /* Ajuste o espaçamento conforme necessário */
-    height: 60px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-  }
+.sidebar .logo-details {
+  margin-top: 20px; /* Ajuste o espaçamento conforme necessário */
+  height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
   
-  .sidebar.close .profile-details {
-    background: none;
-    width: 78px;
-  }
+.sidebar.close .profile-details {
+  background: none;
+  width: 78px;
+}
   
-  .sidebar.close .logo-details .logo_name,
-  .sidebar.close .profile-details .profile_name,
-  .sidebar.close .profile-details .job {
-    display: none;
-  }
+.sidebar.close .logo-details .logo_name,
+.sidebar.close .profile-details .profile_name,
+.sidebar.close .profile-details .job {
+  display: none;
+}
   
 .profile-details .name-job {
     position: relative;
@@ -309,65 +306,92 @@ body {
 }
 
 #FormAPI {
-    display: flex;
-    flex-direction: column;
-    max-width: 600px; /* Aumente a largura aqui conforme necessário */
-    width: 100%; /* Define a largura para ocupar todo o espaço disponível */
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #f9f9f9;
-    margin-top: 12%;
-  }
+  display: flex;
+  flex-direction: column;
+  max-width: 600px; /* Aumente a largura aqui conforme necessário */
+  width: 100%; /* Define a largura para ocupar todo o espaço disponível */
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  margin-top: 12%;
+}
   
-  #FormAPI label {
-    font-size: 16px;
-    margin-bottom: 8px;
-    color: #333;
-  }
+#FormAPI label {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #333;
+}
   
-  #FormAPI input[type="text"],
-  #FormAPI input[type="number"] {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 16px;
-    transition: border-color 0.3s;
-  }
+#FormAPI input[type="text"],
+#FormAPI input[type="number"] {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  transition: border-color 0.3s;
+}
   
-  #FormAPI input[type="text"]:focus,
-  #FormAPI input[type="number"]:focus {
-    border-color: #00619c;
-    outline: none;
-  }
+#FormAPI input[type="text"]:focus,
+#FormAPI input[type="number"]:focus {
+  border-color: #00619c;
+  outline: none;
+}
   
-  #FormAPI button {
-    padding: 12px;
-    font-size: 16px;
-    font-weight: bold;
-    color: white;
-    background-color: #00619c;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
+#FormAPI button {
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #00619c;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
   
-  #FormAPI button:hover {
-    background-color: #00619c;
-  }
+#FormAPI button:hover {
+  background-color: #00619c;
+}
   
-  #resultado {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 10px;
-    font-size: 14px;
-    color: #333;
-    background-color: #f1f1f1;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-  }
+#resultado {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 10px;
+  font-size: 14px;
+  color: #333;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+
+.resultado-estilizado {
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #f1f1f1;
+  max-width: 500px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+
+.resultado-item {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.resultado-label {
+  font-weight: bold;
+  color: #333;
+}
+
+.resultado-valor {
+  color: #555;
+}
