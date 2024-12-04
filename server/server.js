@@ -1,8 +1,11 @@
+require('dotenv').config();
+
 const express = require('express');
 const path = require('path');
-
 const app = express();
 const PORT = 3000;
+
+const apiUrl = process.env.apiUrl;
 
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.json()); 
@@ -23,7 +26,8 @@ app.post('/proxy/Recadastramento', async (req, res) => {
   const fetch = (await import('node-fetch')).default;
 
   try {
-    const response = await fetch('https://api.cofeci.gov.br/api/Recadastramento', {
+    console.log("Chamando API:", `${apiUrl}`); // Log da URL
+    const response = await fetch(apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
