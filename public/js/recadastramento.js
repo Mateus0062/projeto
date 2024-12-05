@@ -40,13 +40,11 @@ formAPI.addEventListener("submit", async (event) => {
   
     const result = await response.json();
   
-    // Filtrar os campos desejados
     const atributosDesejados = ["Nome", "CPFCNPJ", "Pessoa", "CodigoInscricao", "Mensagem"];
     const resultadoFiltrado = Object.fromEntries(
       Object.entries(result).filter(([key]) => atributosDesejados.includes(key))
     );
   
-    // Exibir os dados estilizados
     const resultadoContainer = document.getElementById("resultado");
     resultadoContainer.innerHTML = `
       <div class="resultado-estilizado">

@@ -7,7 +7,10 @@ const app = express();
 const PORT = 3000;
 
 const apiUrl = process.env.apiUrl;
-const apiSMS = 'http://sms.painelmarktel.com.br/index.php?app=api';
+const apiSMS = process.env.apiSMS;
+
+const u = process.env.SMS_API_USER;
+const p = process.env.SMS_API_TOKEN;
 
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.json()); 
@@ -49,8 +52,6 @@ app.post('/proxy/send-sms', async (req, res) => {
   const verificationCode = Math.floor(100000 + Math.random() * 900000);
 
   const o = 'enviar';  
-  const u = 'crecimg'; 
-  const p = '7e535111eed7ac12027630de7e831755'; 
   const f = phoneNumber;
   const m = `Seu código de verificação é: ${verificationCode}`;
 
