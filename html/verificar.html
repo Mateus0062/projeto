@@ -19,16 +19,5 @@
     </form>
 
     <script src="/js/verificar.js"></script>
-    <script>
-        // Exibir o código gerado na página de verificação
-        window.onload = function() {
-            const storedCode = sessionStorage.getItem("verificationCode");
-            const displayCode = document.getElementById("displayCode");
-
-            if (storedCode) {
-                displayCode.textContent = `Código gerado: ${storedCode}`;
-            }
-        };
-    </script>
 </body>
 </html>

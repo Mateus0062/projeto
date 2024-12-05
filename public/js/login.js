@@ -1,20 +1,34 @@
-document.getElementById("formPhone").addEventListener("submit", function(event) {
+document.getElementById("formPhone").addEventListener("submit", async function(event) {
   event.preventDefault();
   
   const phoneNumber = document.getElementById("phoneNumber").value;
 
-  // Armazenar temporariamente o número de telefone
-  sessionStorage.setItem("phoneNumber", phoneNumber);
-  
-  // Gerar o código de verificação manualmente (6 dígitos aleatórios)
-  const verificationCode = Math.floor(100000 + Math.random() * 900000); 
-  
-  // Armazenar o código gerado no sessionStorage
-  sessionStorage.setItem("verificationCode", verificationCode);
+  // Enviar o número de telefone para o servidor via POST
+  try {
+    const response = await fetch("http://localhost:3000/proxy/send-sms", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ phoneNumber })
+    });
 
-  // Simulação do envio para o número (apenas no console por enquanto)
-  console.log(`Código gerado para ${phoneNumber}: ${verificationCode}`);
+    const data = await response.json();
+    
+    if (data.success) {
+      //alerta  informando que a mensagem foi enviada com sucesso
+      alert("Código enviado com sucesso!");
 
-  // Redirecionar para a página de verificação
-  window.location.href = '/verificar'; // A página de verificação
+      //Armazenar código no sessionStorage
+      sessionStorage.setItem("verificationCode", data.verificationCode)
+
+      //encaminhaar para a página verificar
+      window.location.href = '/verificar';
+    } else {
+      alert("Erro ao enviar o código.");
+    }
+  } catch (error) {
+    console.error("Erro ao enviar SMS:", error);
+    alert("Erro ao tentar enviar o SMS.");
+  }
 });

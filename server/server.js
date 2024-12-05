@@ -1,11 +1,13 @@
 require('dotenv').config();
 
+const { error } = require('console');
 const express = require('express');
 const path = require('path');
 const app = express();
 const PORT = 3000;
 
 const apiUrl = process.env.apiUrl;
+const apiSMS = 'http://sms.painelmarktel.com.br/index.php?app=api';
 
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.json()); 
@@ -38,6 +40,42 @@ app.post('/proxy/Recadastramento', async (req, res) => {
     res.json(data);
   } catch (error) {
     res.status(500).json({ error: error.message });
+  }
+});
+
+app.post('/proxy/send-sms', async (req, res) => {
+  const { phoneNumber } = req.body; 
+  
+  const verificationCode = Math.floor(100000 + Math.random() * 900000);
+
+  const o = 'enviar';  
+  const u = 'crecimg'; 
+  const p = '7e535111eed7ac12027630de7e831755'; 
+  const f = phoneNumber;
+  const m = `Seu código de verificação é: ${verificationCode}`;
+
+  const url = `${apiSMS}&o=${o}&u=${u}&p=${p}&f=${f}&m=${encodeURIComponent(m)}`;
+
+  try {
+    const response = await fetch(url, {
+      method: 'GET', 
+    });
+
+    if (!response.ok) {
+      throw new Error(`Erro na API de SMS: ${response.statusText}`);
+    }
+
+    const responseBody = await response.text();
+
+    if (responseBody.includes("erro=0")) {
+      res.json({ success: true, message: 'Código enviado com sucesso!', verificationCode})
+    } else {
+      res.status(500).json({ success: false, error: responseBody})
+    }
+
+  } catch (error) {
+    console.error('Erro ao chamar a API de SMS:', error.message);
+    res.status(500).json({ success: false, error: error.message });
   }
 });
 
