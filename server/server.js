@@ -11,6 +11,7 @@ const apiSMS = process.env.apiSMS;
 
 const u = process.env.SMS_API_USER;
 const p = process.env.SMS_API_TOKEN;
+const o = process.env.SMS_API_OPTION;
 
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.json()); 
@@ -51,7 +52,6 @@ app.post('/proxy/send-sms', async (req, res) => {
   
   const verificationCode = Math.floor(100000 + Math.random() * 900000);
 
-  const o = 'enviar';  
   const f = phoneNumber;
   const m = `Seu código de verificação é: ${verificationCode}`;
 
